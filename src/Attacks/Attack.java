@@ -37,13 +37,15 @@ public abstract class Attack {
         }
     }
     public int performAttack(Droid target){
-        if((Math.random() * 100) <= this.getAccuracy())
-        {
-            return this.getDamage() - this.getDefenseValue(target);
+        if(this.getDamage()!=0) {
+            if ((Math.random() * 100) <= this.getAccuracy()) {
+                return this.getDamage() - this.getDefenseValue(target);
+            } else {
+                return 0;
+            }
         }
-        else
-        {
-            return 0;
+        else{
+            return -1;
         }
     }
     public abstract void Boost(Droid target);
@@ -55,6 +57,9 @@ class StatBoostAttack extends Attack {
         super(name, damage, accuracy, damageType);
         this.boostedStat = boostedStat;
         this.boostMod = boostMod;
+    }
+    public String getBoostedStat(){
+        return boostedStat;
     }
     @Override
     public void Boost(Droid target) {

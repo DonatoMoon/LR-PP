@@ -1,0 +1,19 @@
+Бій розпочато!
+TurtleDroid: Здоров'я - 80
+DragonDroid: Здоров'я - 100
+TurtleDroid використав Head attack і наніс 20 урона!
+TurtleDroid: Здоров'я - 80
+DragonDroid: Здоров'я - 80
+TurtleDroid використав Head attack і наніс 20 урона!
+TurtleDroid: Здоров'я - 80
+DragonDroid: Здоров'я - 60
+DragonDroid використав Вогняне дихання і наніс 20 урона!
+TurtleDroid: Здоров'я - 60
+DragonDroid: Здоров'я - 60
+TurtleDroid використав WaterJet і наніс 30 урона!
+TurtleDroid: Здоров'я - 60
+DragonDroid: Здоров'я - 30
+TurtleDroid використав WaterJet і наніс 30 урона!
+TurtleDroid: Здоров'я - 60
+DragonDroid: Здоров'я - 0
+DragonDroid був переможений! TurtleDroid перемагає!

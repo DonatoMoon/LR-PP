@@ -5,10 +5,13 @@ import Droids.Droid;
 
 import Droids.DragonDroid;
 import Droids.TurtleDroid;
+import Droids.WaterSnakeDroid;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.*;
+
 public class Main {
     private static final List<Droid> droids = new ArrayList<>();
     public static void main(String[] args) {
@@ -17,7 +20,8 @@ public class Main {
             System.out.println("\n1. Створити дроїда");
             System.out.println("2. Показати список дроїдів");
             System.out.println("3. Розпочати бій 1 на 1");
-            System.out.println("4. Вийти\n");
+            System.out.println("4. Відтворити останній бій");
+            System.out.println("0. Вийти\n");
 
             String choice = scanner.nextLine();
 
@@ -36,6 +40,10 @@ public class Main {
                     break;
                 case "4":
                     clearConsole();
+                    replayLastBattle();
+                    break;
+                case "0":
+                    clearConsole();
                     System.out.println("Вихід...");
                     return;
                 default:
@@ -48,8 +56,22 @@ public class Main {
             System.out.println();
         }
     }
-    private static void displayCustomersByName(Droid droid) {
-        System.out.println(droid.toString());
+    private static void logBattle(String logData) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("battle_log.txt", true))) {
+            writer.println(logData);
+        } catch (IOException e) {
+            System.out.println("Не можливо записати лог бою: " + e.getMessage());
+        }
+    }
+    private static void replayLastBattle() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("battle_log.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("Не можливо прочитати лог бою: " + e.getMessage());
+        }
     }
 
     private static void createDroid(Scanner scanner) {
@@ -61,6 +83,9 @@ public class Main {
         System.out.println("2. ЧерепахаДроїд:");
         tmpdroid= new TurtleDroid();
         System.out.println(tmpdroid.toString());
+        System.out.println("2. ЗміяДроїд:");
+        tmpdroid= new WaterSnakeDroid();
+        System.out.println(tmpdroid.toString());
 
         String type = scanner.nextLine();
         Droid newDroid;
@@ -71,6 +96,9 @@ public class Main {
                 break;
             case "2":
                 newDroid = new TurtleDroid();
+                break;
+            case "3":
+                newDroid = new WaterSnakeDroid();
                 break;
             default:
                 System.out.println("Некоректний тип. Дроїда не створено.");
@@ -129,9 +157,19 @@ public class Main {
         }
         clearConsole();
         System.out.println("\nБій розпочато!\n");
+
+        try (FileWriter writer = new FileWriter("battle_log.txt", false)) {
+            // Параметр false вказує, що файл повинен бути очищений
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        logBattle("Бій розпочато!");
         boolean isBattleOver = false;
         System.out.println(fasterDroid.getClass().getSimpleName() + ": Здоров'я - " + fasterDroid.getHealth());
+        logBattle(fasterDroid.getClass().getSimpleName() + ": Здоров'я - " + fasterDroid.getHealth());
         System.out.println(slowerDroid.getClass().getSimpleName() + ": Здоров'я - " + slowerDroid.getHealth() + "\n");
+        logBattle(slowerDroid.getClass().getSimpleName() + ": Здоров'я - " + slowerDroid.getHealth());
+
         while (!isBattleOver) {
 
             // ПЕРША АТАКА
@@ -148,15 +186,39 @@ public class Main {
             if(damageDealt!=0){
                 slowerDroid.takeDamage(damageDealt);
                 System.out.println("\n"+fasterDroid.getClass().getSimpleName() + " використав " + attack.getName() + " і наніс " + damageDealt + " урона!\n");
+                logBattle(fasterDroid.getClass().getSimpleName() + " використав " + attack.getName() + " і наніс " + damageDealt + " урона!");
                 System.out.println(fasterDroid.getClass().getSimpleName() + ": Здоров'я - " + fasterDroid.getHealth());
+                logBattle(fasterDroid.getClass().getSimpleName() + ": Здоров'я - " + fasterDroid.getHealth());
                 System.out.println(slowerDroid.getClass().getSimpleName() + ": Здоров'я - " + slowerDroid.getHealth() + "\n");
+                logBattle(slowerDroid.getClass().getSimpleName() + ": Здоров'я - " + slowerDroid.getHealth());
             }
             else{
                 System.out.println("\n"+fasterDroid.getClass().getSimpleName() + " промазав атакою " + attack.getName()+"\n");
+                logBattle(fasterDroid.getClass().getSimpleName() + " промазав атакою " + attack.getName());
             }
+
+
+            if(damageDealt==0){
+                System.out.println("\n"+fasterDroid.getClass().getSimpleName() + " промазав атакою " + attack.getName()+"\n");
+                logBattle(fasterDroid.getClass().getSimpleName() + " промазав атакою " + attack.getName());
+            } else if (damageDealt==-1) {
+                attack.Boost(fasterDroid);
+                System.out.println("\n"+fasterDroid.getClass().getSimpleName() + "використав" + "\n");
+                logBattle(fasterDroid.getClass().getSimpleName() + " промазав атакою " + attack.);
+            }else{
+                slowerDroid.takeDamage(damageDealt);
+                System.out.println("\n"+fasterDroid.getClass().getSimpleName() + " використав " + attack.getName() + " і наніс " + damageDealt + " урона!\n");
+                logBattle(fasterDroid.getClass().getSimpleName() + " використав " + attack.getName() + " і наніс " + damageDealt + " урона!");
+                System.out.println(fasterDroid.getClass().getSimpleName() + ": Здоров'я - " + fasterDroid.getHealth());
+                logBattle(fasterDroid.getClass().getSimpleName() + ": Здоров'я - " + fasterDroid.getHealth());
+                System.out.println(slowerDroid.getClass().getSimpleName() + ": Здоров'я - " + slowerDroid.getHealth() + "\n");
+                logBattle(slowerDroid.getClass().getSimpleName() + ": Здоров'я - " + slowerDroid.getHealth());
+            }
+
 
             if (slowerDroid.getHealth() <= 0) {
                 System.out.println(slowerDroid.getClass().getSimpleName() + " був переможений! " + fasterDroid.getClass().getSimpleName() + " перемагає!");
+                logBattle(slowerDroid.getClass().getSimpleName() + " був переможений! " + fasterDroid.getClass().getSimpleName() + " перемагає!");
                 isBattleOver = true;
                 break;
             }
@@ -175,15 +237,20 @@ public class Main {
             if(damageDealt!=0){
                 fasterDroid.takeDamage(damageDealt);
                 System.out.println("\n"+slowerDroid.getClass().getSimpleName() + " використав " + attack.getName() + " і наніс " + damageDealt + " урона!\n");
+                logBattle(slowerDroid.getClass().getSimpleName() + " використав " + attack.getName() + " і наніс " + damageDealt + " урона!");
                 System.out.println(fasterDroid.getClass().getSimpleName() + ": Здоров'я - " + fasterDroid.getHealth());
+                logBattle(fasterDroid.getClass().getSimpleName() + ": Здоров'я - " + fasterDroid.getHealth());
                 System.out.println(slowerDroid.getClass().getSimpleName() + ": Здоров'я - " + slowerDroid.getHealth() + "\n");
+                logBattle(slowerDroid.getClass().getSimpleName() + ": Здоров'я - " + slowerDroid.getHealth());
             }
             else{
                 System.out.println("\n"+slowerDroid.getClass().getSimpleName() + " промазав атакою " + attack.getName()+ "\n");
+                logBattle(slowerDroid.getClass().getSimpleName() + " промазав атакою " + attack.getName());
             }
 
             if (fasterDroid.getHealth() <= 0) {
                 System.out.println(fasterDroid.getClass().getSimpleName() + " був переможений! " + slowerDroid.getClass().getSimpleName() + " перемагає!");
+                logBattle(fasterDroid.getClass().getSimpleName() + " був переможений! " + slowerDroid.getClass().getSimpleName() + " перемагає!");
                 isBattleOver = true;
             }
         }
