@@ -1,3 +1,7 @@
+package Droids;
+
+import Attacks.*;
+
 import java.util.Arrays;
 import java.util.List;
 public class Droid {
@@ -17,6 +21,15 @@ public class Droid {
         this.speed = speed;
         this.attacks = attacks;
     }
+    public Droid() {
+        this.health = 0;
+        this.physicalAttack = 0;
+        this.energyAttack = 0;
+        this.physicalDefense = 0;
+        this.energyDefense = 0;
+        this.speed = 0;
+        this.attacks = Arrays.asList();
+    }
     public int getHealth(){
         return health;
     }
@@ -32,6 +45,12 @@ public class Droid {
     public List<Attack> getAttacks() {
         return attacks;
     }
+    @Override
+    public String toString() {
+        return "\t[ Здоров'я: "+health+" | Фіз. атака: "+physicalAttack+" | Енерг. атака: "+energyAttack+" | Фіз. захист: "+physicalDefense+" | Енерг. захист: "+energyDefense+" | Швидкість: "+speed+" ]\n";
+    }
+
+
     public void healDroid(int healValue) {this.health += healValue;}
     public void increasePhysicalAttack(double boostMod) {
         this.physicalAttack *= boostMod;
@@ -48,7 +67,6 @@ public class Droid {
     public void increaseSpeed(double boostMod) {
         this.speed *= boostMod;
     }
-
     public void takeDamage(int damage) {
         if (damage > 0) {
             health -= damage;
@@ -56,25 +74,5 @@ public class Droid {
                 health = 0;
             }
         }
-    }
-}
-class DragonDroid extends Droid {
-    public DragonDroid() {
-        super(100, 50, 20, 10, 15, 15, Arrays.asList(
-                new FireBreath(),
-                new DoubleTailAttack(),
-                new WingAttack(),
-                new Bite()
-        ));
-    }
-}
-class TurtleDroid extends Droid {
-    public TurtleDroid() {
-        super(80, 60, 5, 5, 10, 20, Arrays.asList(
-                new ShellDefense(),
-                new Headbutt(),
-                new WaterJet(),
-                new HealingWave()
-        ));
     }
 }

@@ -1,3 +1,11 @@
+package main;
+
+import Attacks.Attack;
+import Droids.Droid;
+
+import Droids.DragonDroid;
+import Droids.TurtleDroid;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -15,15 +23,19 @@ public class Main {
 
             switch (choice) {
                 case "1":
+                    clearConsole();
                     createDroid(scanner);
                     break;
                 case "2":
+                    clearConsole();
                     showDroids();
                     break;
                 case "3":
+                    clearConsole();
                     startBattle(scanner);
                     break;
                 case "4":
+                    clearConsole();
                     System.out.println("Вихід...");
                     return;
                 default:
@@ -31,10 +43,24 @@ public class Main {
             }
         }
     }
+    public static void clearConsole() {
+        for (int i = 0; i < 100; i++) {
+            System.out.println();
+        }
+    }
+    private static void displayCustomersByName(Droid droid) {
+        System.out.println(droid.toString());
+    }
+
     private static void createDroid(Scanner scanner) {
-        System.out.println("\nОберіть тип дроїда:");
+        Droid tmpdroid = new Droid();
+        System.out.println("Оберіть тип дроїда:");
         System.out.println("1. ДраконДроїд");
-        System.out.println("2. ЧерепахаДроїд\n");
+        tmpdroid= new DragonDroid();
+        System.out.println(tmpdroid.toString());
+        System.out.println("2. ЧерепахаДроїд:");
+        tmpdroid= new TurtleDroid();
+        System.out.println(tmpdroid.toString());
 
         String type = scanner.nextLine();
         Droid newDroid;
@@ -68,6 +94,7 @@ public class Main {
         List<Attack> attacks = droid.getAttacks();
         for (int i = 0; i < attacks.size(); i++) {
             System.out.println((i + 1) + ". " + attacks.get(i).getName());
+            System.out.println(attacks.get(i).toString());
         }
     }
     private static void startBattle(Scanner scanner) {
@@ -100,7 +127,7 @@ public class Main {
             fasterDroid = secondDroid;
             slowerDroid = firstDroid;
         }
-
+        clearConsole();
         System.out.println("\nБій розпочато!\n");
         boolean isBattleOver = false;
         System.out.println(fasterDroid.getClass().getSimpleName() + ": Здоров'я - " + fasterDroid.getHealth());
@@ -120,12 +147,12 @@ public class Main {
             int damageDealt = attack.performAttack(slowerDroid);
             if(damageDealt!=0){
                 slowerDroid.takeDamage(damageDealt);
-                System.out.println(fasterDroid.getClass().getSimpleName() + " використав " + attack.getName() + " і наніс " + damageDealt + " урона!");
+                System.out.println("\n"+fasterDroid.getClass().getSimpleName() + " використав " + attack.getName() + " і наніс " + damageDealt + " урона!\n");
                 System.out.println(fasterDroid.getClass().getSimpleName() + ": Здоров'я - " + fasterDroid.getHealth());
                 System.out.println(slowerDroid.getClass().getSimpleName() + ": Здоров'я - " + slowerDroid.getHealth() + "\n");
             }
             else{
-                System.out.println(fasterDroid.getClass().getSimpleName() + " промазав атакою " + attack.getName());
+                System.out.println("\n"+fasterDroid.getClass().getSimpleName() + " промазав атакою " + attack.getName()+"\n");
             }
 
             if (slowerDroid.getHealth() <= 0) {
@@ -138,7 +165,6 @@ public class Main {
             System.out.println(slowerDroid.getClass().getSimpleName() + " атакує:");
             showAttacks(slowerDroid);
             attackChoice = Integer.parseInt(scanner.nextLine()) - 1;
-
             if (attackChoice < 0 || attackChoice >= slowerDroid.getAttacks().size()) {
                 System.out.println("Некоректний вибір атаки. Спробуйте ще раз.");
             }
@@ -147,16 +173,14 @@ public class Main {
             damageDealt = attack.performAttack(fasterDroid);
 
             if(damageDealt!=0){
-
                 fasterDroid.takeDamage(damageDealt);
-                System.out.println(slowerDroid.getClass().getSimpleName() + " використав " + attack.getName() + " і наніс " + damageDealt + " урона!");
+                System.out.println("\n"+slowerDroid.getClass().getSimpleName() + " використав " + attack.getName() + " і наніс " + damageDealt + " урона!\n");
                 System.out.println(fasterDroid.getClass().getSimpleName() + ": Здоров'я - " + fasterDroid.getHealth());
                 System.out.println(slowerDroid.getClass().getSimpleName() + ": Здоров'я - " + slowerDroid.getHealth() + "\n");
             }
             else{
-                System.out.println(slowerDroid.getClass().getSimpleName() + " промазав атакою " + attack.getName());
+                System.out.println("\n"+slowerDroid.getClass().getSimpleName() + " промазав атакою " + attack.getName()+ "\n");
             }
-
 
             if (fasterDroid.getHealth() <= 0) {
                 System.out.println(fasterDroid.getClass().getSimpleName() + " був переможений! " + slowerDroid.getClass().getSimpleName() + " перемагає!");
