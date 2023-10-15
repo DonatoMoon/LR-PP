@@ -1,11 +1,10 @@
 package main;
 
 import Attacks.Attack;
+import Attacks.StatBoostAttack;
 import Droids.Droid;
 
-import Droids.DragonDroid;
-import Droids.TurtleDroid;
-import Droids.WaterSnakeDroid;
+import Droids.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.Scanner;
 import java.io.*;
 
 public class Main {
-    private static final List<Droid> droids = new ArrayList<>();
+    private static List<Droid> droids = new ArrayList<>();
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -183,28 +182,15 @@ public class Main {
 
             Attack attack = fasterDroid.getAttacks().get(attackChoice);
             int damageDealt = attack.performAttack(slowerDroid);
-            if(damageDealt!=0){
-                slowerDroid.takeDamage(damageDealt);
-                System.out.println("\n"+fasterDroid.getClass().getSimpleName() + " використав " + attack.getName() + " і наніс " + damageDealt + " урона!\n");
-                logBattle(fasterDroid.getClass().getSimpleName() + " використав " + attack.getName() + " і наніс " + damageDealt + " урона!");
-                System.out.println(fasterDroid.getClass().getSimpleName() + ": Здоров'я - " + fasterDroid.getHealth());
-                logBattle(fasterDroid.getClass().getSimpleName() + ": Здоров'я - " + fasterDroid.getHealth());
-                System.out.println(slowerDroid.getClass().getSimpleName() + ": Здоров'я - " + slowerDroid.getHealth() + "\n");
-                logBattle(slowerDroid.getClass().getSimpleName() + ": Здоров'я - " + slowerDroid.getHealth());
-            }
-            else{
-                System.out.println("\n"+fasterDroid.getClass().getSimpleName() + " промазав атакою " + attack.getName()+"\n");
-                logBattle(fasterDroid.getClass().getSimpleName() + " промазав атакою " + attack.getName());
-            }
-
 
             if(damageDealt==0){
                 System.out.println("\n"+fasterDroid.getClass().getSimpleName() + " промазав атакою " + attack.getName()+"\n");
                 logBattle(fasterDroid.getClass().getSimpleName() + " промазав атакою " + attack.getName());
             } else if (damageDealt==-1) {
                 attack.Boost(fasterDroid);
-                System.out.println("\n"+fasterDroid.getClass().getSimpleName() + "використав" + "\n");
-                logBattle(fasterDroid.getClass().getSimpleName() + " промазав атакою " + attack.);
+                StatBoostAttack boostAttack = (StatBoostAttack) attack;
+                System.out.println("\n"+fasterDroid.getClass().getSimpleName() + " використав " + boostAttack.getName() + ". і підвищив " + boostAttack.getBoostedStat()+"\n");
+                logBattle(fasterDroid.getClass().getSimpleName() + " використав " + boostAttack.getName() + ". і підвищив " + boostAttack.getBoostedStat());
             }else{
                 slowerDroid.takeDamage(damageDealt);
                 System.out.println("\n"+fasterDroid.getClass().getSimpleName() + " використав " + attack.getName() + " і наніс " + damageDealt + " урона!\n");

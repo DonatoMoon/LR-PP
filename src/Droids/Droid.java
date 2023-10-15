@@ -50,7 +50,6 @@ public class Droid {
         return "\t[ Здоров'я: "+health+" | Фіз. атака: "+physicalAttack+" | Енерг. атака: "+energyAttack+" | Фіз. захист: "+physicalDefense+" | Енерг. захист: "+energyDefense+" | Швидкість: "+speed+" ]\n";
     }
 
-
     public void healDroid(int healValue) {this.health += healValue;}
     public void increasePhysicalAttack(double boostMod) {
         this.physicalAttack *= boostMod;

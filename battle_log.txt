@@ -4,16 +4,34 @@ DragonDroid: Здоров'я - 100
 TurtleDroid використав Head attack і наніс 20 урона!
 TurtleDroid: Здоров'я - 80
 DragonDroid: Здоров'я - 80
+DragonDroid використав Bite і наніс 30 урона!
+TurtleDroid: Здоров'я - 50
+DragonDroid: Здоров'я - 80
+TurtleDroid використав Healing Wave. і підвищив health
+DragonDroid промазав атакою Вогняне дихання
+TurtleDroid використав Healing Wave. і підвищив health
+DragonDroid використав Wing Attack і наніс 20 урона!
+TurtleDroid: Здоров'я - 130
+DragonDroid: Здоров'я - 80
 TurtleDroid використав Head attack і наніс 20 урона!
-TurtleDroid: Здоров'я - 80
+TurtleDroid: Здоров'я - 130
 DragonDroid: Здоров'я - 60
-DragonDroid використав Вогняне дихання і наніс 20 урона!
+DragonDroid використав Подвійний удар хвостом і наніс 35 урона!
+TurtleDroid: Здоров'я - 95
+DragonDroid: Здоров'я - 60
+TurtleDroid використав Head attack і наніс 20 урона!
+TurtleDroid: Здоров'я - 95
+DragonDroid: Здоров'я - 40
+DragonDroid використав Подвійний удар хвостом і наніс 35 урона!
 TurtleDroid: Здоров'я - 60
-DragonDroid: Здоров'я - 60
+DragonDroid: Здоров'я - 40
 TurtleDroid використав WaterJet і наніс 30 урона!
 TurtleDroid: Здоров'я - 60
-DragonDroid: Здоров'я - 30
-TurtleDroid використав WaterJet і наніс 30 урона!
-TurtleDroid: Здоров'я - 60
+DragonDroid: Здоров'я - 10
+DragonDroid використав Подвійний удар хвостом і наніс 35 урона!
+TurtleDroid: Здоров'я - 25
+DragonDroid: Здоров'я - 10
+TurtleDroid використав Head attack і наніс 20 урона!
+TurtleDroid: Здоров'я - 25
 DragonDroid: Здоров'я - 0
 DragonDroid був переможений! TurtleDroid перемагає!
