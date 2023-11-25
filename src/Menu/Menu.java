@@ -10,7 +10,7 @@ public class Menu {
     private final Map<String, Command> commands = new HashMap<>();
 
     public void setupCommands() {
-        commands.put("9", new LoadTracksCommand());
+        commands.put("1", new LoadTracksCommand());
         commands.put("2", new ShowAllTracksCommand());
         commands.put("3", new CalculateDurationCommand());
         commands.put("4", new PermutationCommand());
