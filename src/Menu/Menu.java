@@ -1,22 +1,28 @@
 package Menu;
 
 import Menu.Commands.*;
-
+import Compositions.*;
+import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Menu {
     private final Map<String, Command> commands = new HashMap<>();
+    private final List<Composition> compositions;
 
+    public Menu(List<Composition> compositions) {
+        this.compositions = compositions;
+    }
     public void setupCommands() {
-        commands.put("9", new LoadTracksCommand());
-        commands.put("2", new ShowAllTracksCommand());
-        commands.put("3", new CalculateDurationCommand());
-        commands.put("4", new PermutationCommand());
-        commands.put("5", new FilterTracksCommand());
-        commands.put("6", new FindTrackCommand());
-        commands.put("7", new DeleteTrackCommand());
+        Scanner scanner = new Scanner(System.in);
+        commands.put("1", new LoadTracksCommand(compositions));
+        commands.put("2", new ShowAllTracksCommand(compositions));
+        commands.put("3", new CalculateDurationCommand(compositions));
+        commands.put("4", new PermutationCommand(compositions));
+        commands.put("5", new FilterTracksCommand(compositions));
+        commands.put("6", new FindTrackCommand(compositions));
+        commands.put("7", new DeleteTrackCommand(compositions));
         commands.put("0", new ExitCommand());
     }
 
