@@ -1,5 +1,5 @@
 package Menu;
-
+import java.util.logging.Logger;
 import Menu.Commands.*;
 import Compositions.*;
 import java.util.List;
@@ -9,13 +9,12 @@ import java.util.Scanner;
 
 public class Menu {
     private final Map<String, Command> commands = new HashMap<>();
+    private static final Logger logger = Logger.getLogger(Menu.class.getName());
     private final List<Composition> compositions;
-
     public Menu(List<Composition> compositions) {
         this.compositions = compositions;
     }
     public void setupCommands() {
-        Scanner scanner = new Scanner(System.in);
         commands.put("1", new LoadTracksCommand(compositions));
         commands.put("2", new ShowAllTracksCommand(compositions));
         commands.put("3", new CalculateDurationCommand(compositions));
@@ -42,12 +41,17 @@ public class Menu {
             System.out.println("[0] Exit");
             System.out.print("Оберіть дію: ");
             input = scanner.nextLine();
+            logger.info("Користувач обрав дію: " + input);
             Command command = commands.get(input);
             if (command != null) {
                 command.execute();
             } else {
                 System.out.println("Некоректна дія, спробуйте ще раз");
+                logger.warning("Некоректна дія: " + input);
             }
         } while (!input.equals("0"));
+    }
+    public Map<String, Command> getCommands() {
+        return commands;
     }
 }

@@ -1,0 +1,66 @@
+лист. 29, 2023 11:05:41 ДП Menu.Menu show
+INFO: Користувач обрав дію: 1
+лист. 29, 2023 11:05:42 ДП Menu.Commands.LoadTracksCommand execute
+INFO: Початок виконання команди завантаження композицій
+лист. 29, 2023 11:05:42 ДП Menu.Commands.LoadTracksCommand execute
+INFO: Композиції успішно завантажено.
+лист. 29, 2023 11:05:45 ДП Menu.Menu show
+INFO: Користувач обрав дію: 2
+лист. 29, 2023 11:05:45 ДП Menu.Commands.ShowAllTracksCommand execute
+INFO: Виконання команди відображення всіх треків
+лист. 29, 2023 11:05:49 ДП Menu.Menu show
+INFO: Користувач обрав дію: 3
+лист. 29, 2023 11:05:49 ДП Menu.Commands.CalculateDurationCommand execute
+INFO: Виконання команди розрахунку загальної тривалості композицій
+лист. 29, 2023 11:05:49 ДП Menu.Commands.CalculateDurationCommand execute
+INFO: Загальна тривалість композицій: 1587 секунд
+лист. 29, 2023 11:05:52 ДП Menu.Menu show
+INFO: Користувач обрав дію: 5
+лист. 29, 2023 11:05:52 ДП Menu.Commands.FilterTracksCommand execute
+INFO: Виконання команди фільтрації треків
+лист. 29, 2023 11:05:57 ДП Menu.Commands.FilterTracksCommand execute
+INFO: Фільтрація за роком (зростання)
+лист. 29, 2023 11:05:57 ДП Menu.Commands.FilterTracksCommand execute
+INFO: Фільтрація треків завершена
+груд. 22, 2023 10:37:08 ДП Menu.Menu show
+INFO: Користувач обрав дію: 1
+груд. 22, 2023 10:37:09 ДП Menu.Commands.LoadTracksCommand execute
+INFO: Початок виконання команди завантаження композицій
+груд. 22, 2023 10:37:09 ДП Menu.Commands.LoadTracksCommand execute
+SEVERE: Помилка при завантаженні композицій: src\resources\tracks.json (The system cannot find the path specified)
+груд. 22, 2023 10:37:12 ДП Menu.Commands.LoadTracksCommand execute
+SEVERE: Помилка при завантаженні композицій: src\resources\tracks.json (The system cannot find the path specified)
+груд. 22, 2023 10:37:49 ДП Menu.Menu show
+INFO: Користувач обрав дію: 1
+груд. 22, 2023 10:37:49 ДП Menu.Commands.LoadTracksCommand execute
+INFO: Початок виконання команди завантаження композицій
+груд. 22, 2023 10:37:49 ДП Menu.Commands.LoadTracksCommand execute
+INFO: Композиції успішно завантажено.
+груд. 22, 2023 10:38:04 ДП Menu.Menu show
+INFO: Користувач обрав дію: 2
+груд. 22, 2023 10:38:04 ДП Menu.Commands.ShowAllTracksCommand execute
+INFO: Виконання команди відображення всіх треків
+груд. 22, 2023 10:38:17 ДП Menu.Menu show
+INFO: Користувач обрав дію: 3
+груд. 22, 2023 10:38:17 ДП Menu.Commands.CalculateDurationCommand execute
+INFO: Виконання команди розрахунку загальної тривалості композицій
+груд. 22, 2023 10:38:17 ДП Menu.Commands.CalculateDurationCommand execute
+INFO: Загальна тривалість композицій: 1587 секунд
+груд. 22, 2023 10:38:34 ДП Menu.Menu show
+INFO: Користувач обрав дію: 5
+груд. 22, 2023 10:38:34 ДП Menu.Commands.FilterTracksCommand execute
+INFO: Виконання команди фільтрації треків
+груд. 22, 2023 10:38:36 ДП Menu.Commands.FilterTracksCommand execute
+INFO: Фільтрація за назвою (спадання)
+груд. 22, 2023 10:38:36 ДП Menu.Commands.FilterTracksCommand execute
+INFO: Фільтрація треків завершена
+груд. 22, 2023 10:38:56 ДП Menu.Menu show
+INFO: Користувач обрав дію: 6
+груд. 22, 2023 10:39:01 ДП Menu.Commands.FindTrackCommand execute
+INFO: Пошук композицій за запитом: Imagine
+груд. 22, 2023 10:39:01 ДП Menu.Commands.FindTrackCommand lambda$execute$1
+INFO: Знайдена композиція: Imagine                        John Lennon          181           Rock            1971           
+груд. 22, 2023 10:39:10 ДП Menu.Menu show
+INFO: Користувач обрав дію: 0
+груд. 22, 2023 10:39:10 ДП Menu.Commands.ExitCommand execute
+INFO: Виконується команда виходу з програми
